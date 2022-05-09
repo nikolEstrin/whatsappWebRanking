@@ -1,4 +1,10 @@
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using whatsappWeb.Data;
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddDbContext<whatsappWebContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("whatsappWebContext") ?? throw new InvalidOperationException("Connection string 'whatsappWebContext' not found.")));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
@@ -18,6 +24,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=AllRankings}/{action=Index}/{id?}");
 
 app.Run();

@@ -15,6 +15,46 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = D:\Programming\whatsappWeb\whatsappWeb
 build_property._RazorSourceGeneratorDebug = 
 
+[D:/Programming/whatsappWeb/whatsappWeb/Views/AllRankings/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWxsUmFua2luZ3NcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Programming/whatsappWeb/whatsappWeb/Views/AllRankings/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWxsUmFua2luZ3NcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Programming/whatsappWeb/whatsappWeb/Views/AllRankings/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWxsUmFua2luZ3NcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Programming/whatsappWeb/whatsappWeb/Views/AllRankings/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWxsUmFua2luZ3NcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Programming/whatsappWeb/whatsappWeb/Views/AllRankings/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWxsUmFua2luZ3NcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Programming/whatsappWeb/whatsappWeb/Views/Rankings/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmFua2luZ3NcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Programming/whatsappWeb/whatsappWeb/Views/Rankings/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmFua2luZ3NcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Programming/whatsappWeb/whatsappWeb/Views/Rankings/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmFua2luZ3NcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Programming/whatsappWeb/whatsappWeb/Views/Rankings/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmFua2luZ3NcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Programming/whatsappWeb/whatsappWeb/Views/Rankings/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmFua2luZ3NcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/Programming/whatsappWeb/whatsappWeb/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
