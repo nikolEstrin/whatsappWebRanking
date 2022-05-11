@@ -16,7 +16,5 @@ namespace whatsappWeb.Data
         }
 
         public DbSet<whatsappWeb.Models.Ranking> Ranking { get; set; }
-
-        public DbSet<whatsappWeb.Models.AllRankings> AllRankings { get; set; }
     }
 }

@@ -19,6 +19,11 @@
 <h1>Index</h1>
 <h1>@ViewBag.avg</h1>
 
+<form asp-action="Search">
+    <input name="query" id="search"/>
+    <input type="submit" value="Search"/>
+</form>
+
 <p>
     <a asp-action="Create">Create New</a>
 </p>
@@ -70,3 +75,7 @@
 }
     </tbody>
 </table>
+
+@section Scripts{
+<script src="~/js/search.js"></script>
+}

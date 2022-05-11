@@ -26,6 +26,26 @@ namespace whatsappWeb.Controllers
             return View(await _context.Ranking.ToListAsync());
         }
 
+        public async Task<IActionResult> Search()
+        {
+            return View(await _context.Ranking.ToListAsync());
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Search(string query)
+        {
+            var q = _context.Ranking.Where(r => r.feedback.Contains(query) || r.author.Contains(query));
+
+            return View(await q.ToListAsync());
+        }
+
+        public async Task<IActionResult> Search2(string query)
+        {
+            var q = _context.Ranking.Where(r => r.feedback.Contains(query) || r.author.Contains(query));
+
+            return PartialView(await q.ToListAsync());
+        }
+
         // GET: Rankings/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -55,15 +75,16 @@ namespace whatsappWeb.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,score,feedback,author,date,time")] Ranking ranking)
+        public async Task<IActionResult> Create(int Id, int score, string feedback, string author)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(ranking);
+                _context.Add(new Ranking() { Id=Id, score=score, feedback=feedback, author=author, date= DateTime.Now.ToString("MM/dd/yyyy"), time= DateTime.Now.ToString("HH:mm") });
                 await _context.SaveChangesAsync();
+            
                 return RedirectToAction(nameof(Index));
             }
-            return View(ranking);
+            return View(new Ranking() { Id = Id, score = score, feedback = feedback, author = author, date = "H", time = "H" });
         }
 
         // GET: Rankings/Edit/5

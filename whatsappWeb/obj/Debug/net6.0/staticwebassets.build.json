@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "naRtv4BTyt/UB2FoVmS9CqjwR2Iz6zNwhipQvOvWIjg=",
+  "Hash": "0mQHaD6i6p9bIY8vMXP4YRjaDMz894Q2IrjfQ2ksJVM=",
   "Source": "whatsappWeb",
   "BasePath": "_content/whatsappWeb",
   "Mode": "Default",
@@ -83,6 +83,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "D:\\Programming\\whatsappWeb\\whatsappWeb\\wwwroot\\js\\search.js",
+      "SourceId": "whatsappWeb",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Programming\\whatsappWeb\\whatsappWeb\\wwwroot\\",
+      "BasePath": "_content/whatsappWeb",
+      "RelativePath": "js/search.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\search.js"
     },
     {
       "Identity": "D:\\Programming\\whatsappWeb\\whatsappWeb\\wwwroot\\js\\site.js",
