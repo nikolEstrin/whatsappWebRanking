@@ -15,66 +15,80 @@
     }
     ViewBag.avg /= count;
 }
+<div class="searchDiv">
+    <form asp-action="Search" class="inputDiv">
+        <input name="query" placeholder="Search for rank" id="search"/>
+        <input type="submit" value="Search"/>
+    </form>
+</div>
 
-<h1>Index</h1>
-<h1>@ViewBag.avg</h1>
+<div class='rightDiv'>
+    <h1>Average score:</h1><p> @if (@ViewBag.avg == 1)
+                {
+                    <img class="stars" src="~/css/Images/oneStar.png"/>
+                }
+                else if(@ViewBag.avg == 2)
+                {
+                    <img class="stars" src="~/css/Images/twoStar.png"/>
+                }
+                 else if(@ViewBag.avg == 3)
+                {
+                    <img class="stars" src="~/css/Images/threeStar.png"/>
+                }
+                 else if(@ViewBag.avg == 4)
+                {
+                    <img class="stars" src="~/css/Images/fourStar.png"/>
+                }
+                 else
+                {
+                    <img class="stars" src="~/css/Images/fiveStar.png"/>
+                }</p>
 
-<form asp-action="Search">
-    <input name="query" id="search"/>
-    <input type="submit" value="Search"/>
-</form>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.score)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.feedback)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.author)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.date)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.time)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
+<p><button class="btn-create" onclick="location.href='@Url.Action("Create")'">Create New Rating</button></p>
+</div>
+
+<div id="tbody" class="rankingsBack overflow-y-auto">
 @foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.score)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.feedback)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.author)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.date)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.time)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+
+        <div class="oneRating" onclick="location.href='@Url.Action("Details")?id='+@item.Id">
+                <h5>@Html.DisplayFor(modelItem => item.author)</h5>
+                
+                @if (item.score == 1)
+                {
+                    <img class="stars" src="~/css/Images/oneStar.png"/>
+                }
+                else if(item.score == 2)
+                {
+                    <img class="stars" src="~/css/Images/twoStar.png"/>
+                }
+                 else if(item.score == 3)
+                {
+                    <img class="stars" src="~/css/Images/threeStar.png"/>
+                }
+                 else if(item.score == 4)
+                {
+                    <img class="stars" src="~/css/Images/fourStar.png"/>
+                }
+                 else
+                {
+                    <img class="stars" src="~/css/Images/fiveStar.png"/>
+                }
+                <br>
+                @Html.DisplayFor(modelItem => item.feedback) <br>
+
+                
+                <div class="dateAndTime">
+                    @Html.DisplayFor(modelItem => item.date)
+                    @Html.DisplayFor(modelItem => item.time)
+                </div>
+                
+                <button class="btn-grad" onclick="location.href='@Url.Action("Edit")?id='+@item.Id; event.stopPropagation(); ">Edit</button>
+                <button class="btn-grad" onclick="location.href='@Url.Action("Delete")?id='+@item.Id; event.stopPropagation(); ">Delete</button>
+        </div>
+
+}   
+</div>
 
 @section Scripts{
 <script src="~/js/search.js"></script>

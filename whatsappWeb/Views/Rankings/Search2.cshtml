@@ -1,27 +1,42 @@
 ﻿@model IEnumerable<whatsappWeb.Models.Ranking>
 
 @foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.score)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.feedback)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.author)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.date)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.time)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
+
+        <div class="oneRating" onclick="location.href='@Url.Action("Details")?id='+@item.Id">
+                <h5>@Html.DisplayFor(modelItem => item.author)</h5>
+                
+                @if (item.score == 1)
+                {
+                    <img class="stars" src="~/css/Images/oneStar.png"/>
+                }
+                else if(item.score == 2)
+                {
+                    <img class="stars" src="~/css/Images/twoStar.png"/>
+                }
+                 else if(item.score == 3)
+                {
+                    <img class="stars" src="~/css/Images/threeStar.png"/>
+                }
+                 else if(item.score == 4)
+                {
+                    <img class="stars" src="~/css/Images/fourStar.png"/>
+                }
+                 else
+                {
+                    <img class="stars" src="~/css/Images/fiveStar.png"/>
+                }
+                <br>
+                @Html.DisplayFor(modelItem => item.feedback) <br>
+
+                
+                <div class="dateAndTime">
+                    @Html.DisplayFor(modelItem => item.date)
+                    @Html.DisplayFor(modelItem => item.time)
+                </div>
+                
+                <button class="btn-grad" onclick="location.href='@Url.Action("Edit")?id='+@item.Id; event.stopPropagation(); ">Edit</button>
+                <button class="btn-grad" onclick="location.href='@Url.Action("Delete")?id='+@item.Id; event.stopPropagation(); ">Delete</button>
+        </div>
+
+}   
 

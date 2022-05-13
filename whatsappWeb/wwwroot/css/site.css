@@ -14,5 +14,90 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+    background-image: url('/css/Images/background.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: hidden;
+}
+
+.rankingsBack{
+    background-color: white;
+    width: 40%;
+    overflow-x:hidden;
+    height:91vh;
+    top:10vh;
+    position:absolute;
+}
+
+.rightDiv {
+    width: 40%;
+    transform: translate(160%, 180%);
+}
+
+.oneRating {
+    height: 21vh;
+    position:relative;
+}
+
+.oneRating:hover {
+    background-color: lightgray;
+}
+
+.dateAndTime{
+    transform:translateX(75%);
+}
+
+.btn-grad {
+    background-image: linear-gradient(to right, #642B73 0%, #C6426E 51%, #642B73 100%);
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;
+    width: 10%;
+    border-radius: 10px;
+    transform: translateX(750%);
+    vertical-align:top;
+}
+
+.btn-grad:hover {
+    background-position: right center;
+    color: #fff;
+    text-decoration: none;
+}
+
+.stars{
+    width:30%;
+}
+
+.detailsBack{
+    width:70%;
+    transform:translateX(50%);
+}
+
+.btn-create {
+    background-image: linear-gradient(to right, #642B73 0%, #C6426E 51%, #642B73 100%);
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;
+    width: 20%;
+    border-radius: 10px;
+    vertical-align: top;
+    transform:translate(50%,30%);
+}
+
+.btn-create:hover {
+    background-position: right center;
+    color: #fff;
+    text-decoration: none;
+}
+
+.searchDiv {
+    background-color: rgb(117, 115, 244);
+    width: 40%;
+    height:10vh;
+    position:absolute;
+}
+
+.inputDiv{
+    transform:translate(28%, 40%);
 }

@@ -7,14 +7,32 @@
 <h1>Details</h1>
 
 <div>
-    <h4>Ranking</h4>
     <hr />
-    <dl class="row">
+    <dl class="row detailsBack">
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.score)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.score)
+             @if (Model.score == 1)
+                {
+                    <img class="stars" src="~/css/Images/oneStar.png"/>
+                }
+                else if(Model.score == 2)
+                {
+                    <img class="stars" src="~/css/Images/twoStar.png"/>
+                }
+                 else if(Model.score == 3)
+                {
+                    <img class="stars" src="~/css/Images/threeStar.png"/>
+                }
+                 else if(Model.score == 4)
+                {
+                    <img class="stars" src="~/css/Images/fourStar.png"/>
+                }
+                 else
+                {
+                    <img class="stars" src="~/css/Images/fiveStar.png"/>
+                }
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.feedback)
@@ -43,6 +61,6 @@
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <button class="btn-grad" onclick="location.href='@Url.Action("Edit")?id='+@Html.DisplayFor(model => model.Id)">Edit</button>
+    <button class="btn-grad" onclick="location.href='@Url.Action("Search")'">Back</button>
 </div>

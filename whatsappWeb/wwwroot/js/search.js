@@ -4,7 +4,6 @@
 
         const q = $('#search').val();
 
-        $('tbody').load('/Rankings/Search2?query='+q);
+        $('#tbody').load('/Rankings/Search2?query='+q);
     })
-
 });
