@@ -73,6 +73,10 @@ body {
     width:70%;
     transform:translateX(50%);
 }
+.createBack {
+    width: 40%;
+    transform: translateX(80%);
+}
 
 .btn-create {
     background-image: linear-gradient(to right, #642B73 0%, #C6426E 51%, #642B73 100%);
@@ -91,11 +95,27 @@ body {
     text-decoration: none;
 }
 
+#createPage {
+    transform: translate(450%,-65%);
+  
+}
+
+#backBtn {
+    transform: translate(450%,-65%);
+    width:10%;
+
+}
+
+#backBtnInDelete {
+    transform: translate(900%,-95%);
+    width: 10%;
+}
+
 .searchDiv {
     background-color: rgb(117, 115, 244);
     width: 40%;
-    height:10vh;
-    position:absolute;
+    height: 10vh;
+    position: absolute;
 }
 
 .inputDiv{

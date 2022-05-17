@@ -82,7 +82,7 @@ namespace whatsappWeb.Controllers
                 _context.Add(new Ranking() { Id=Id, score=score, feedback=feedback, author=author, date= DateTime.Now.ToString("MM/dd/yyyy"), time= DateTime.Now.ToString("HH:mm") });
                 await _context.SaveChangesAsync();
             
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Search));
             }
             return View(new Ranking() { Id = Id, score = score, feedback = feedback, author = author, date = "H", time = "H" });
         }
@@ -133,7 +133,7 @@ namespace whatsappWeb.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Search));
             }
             return View(ranking);
         }
@@ -164,7 +164,7 @@ namespace whatsappWeb.Controllers
             var ranking = await _context.Ranking.FindAsync(id);
             _context.Ranking.Remove(ranking);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(Search));
         }
 
         private bool RankingExists(int id)
