@@ -13,8 +13,10 @@
         ViewBag.avg += item.score;
         count++;
     }
-    ViewBag.avg /= count;
+    if(count != 0)
+        ViewBag.avg /= count;
 }
+
 <div class="searchDiv">
     <form asp-action="Search" class="inputDiv">
         <input name="query" placeholder="Search for rank" id="search"/>
