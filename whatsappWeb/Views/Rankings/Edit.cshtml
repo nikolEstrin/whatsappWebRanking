@@ -13,7 +13,7 @@
             <input type="hidden" asp-for="Id" />
             <div class="form-group">
                 <label asp-for="score" class="control-label"></label>
-                <input asp-for="score" class="form-control" />
+                <input asp-for="score" min=1 max=5 class="form-control" />
                 <span asp-validation-for="score" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -30,7 +30,7 @@
                 <label asp-for="date" class="control-label"></label>
                 <input asp-for="date" class="form-control" />
                 <span asp-validation-for="date" class="text-danger"></span>
-            </div>s
+            </div>
             <div class="form-group" hidden="hidden">
                 <label asp-for="time" class="control-label" ></label>
                 <input asp-for="time" class="form-control" />
