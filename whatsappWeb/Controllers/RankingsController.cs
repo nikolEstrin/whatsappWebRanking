@@ -8,66 +8,53 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using whatsappWeb.Data;
 using whatsappWeb.Models;
+using whatsappWeb.Services;
 
 namespace whatsappWeb.Controllers
 {
     public class RankingsController : Controller
     {
         private readonly whatsappWebContext _context;
+        private readonly IRankingsService _service;
 
-        public RankingsController(whatsappWebContext context)
+        public RankingsController(IRankingsService service, whatsappWebContext context)
         {
+            _service = service;
             _context = context;
         }
 
         // GET: Rankings
-        public async Task<IActionResult> Index()
+        public Task<IActionResult> Index()
         {
-            return View(await _context.Ranking.ToListAsync());
+            return _service.Index(_context);
         }
 
-        public async Task<IActionResult> Search()
+        public Task<IActionResult> Search()
         {
-            return View(await _context.Ranking.ToListAsync());
+            return _service.Search(_context);
         }
 
         [HttpPost]
-        public async Task<IActionResult> Search(string query)
+        public Task<IActionResult> Search(string query)
         {
-            var q = _context.Ranking.Where(r => r.feedback.Contains(query) || r.author.Contains(query));
-
-            return View(await q.ToListAsync());
+            return _service.Search(_context, query);
         }
 
-        public async Task<IActionResult> Search2(string query)
+        public Task<IActionResult> Search2(string query)
         {
-            var q = _context.Ranking.Where(r => r.feedback.Contains(query) || r.author.Contains(query));
-
-            return PartialView(await q.ToListAsync());
+            return _service.Search2(_context, query);
         }
 
         // GET: Rankings/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public Task<IActionResult> Details(int? id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var ranking = await _context.Ranking
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (ranking == null)
-            {
-                return NotFound();
-            }
-
-            return View(ranking);
+            return _service.Details(_context, id);
         }
 
         // GET: Rankings/Create
         public IActionResult Create()
         {
-            return View();
+            return _service.Create(_context);
         }
 
         // POST: Rankings/Create
@@ -75,32 +62,15 @@ namespace whatsappWeb.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(int Id, int score, string feedback, string author)
+        public Task<IActionResult> Create(int Id, int score, string feedback, string author)
         {
-            if (ModelState.IsValid)
-            {
-                _context.Add(new Ranking() { Id=Id, score=score, feedback=feedback, author=author, date= DateTime.Now.ToString("MM/dd/yyyy"), time= DateTime.Now.ToString("HH:mm") });
-                await _context.SaveChangesAsync();
-            
-                return RedirectToAction(nameof(Search));
-            }
-            return View(new Ranking() { Id = Id, score = score, feedback = feedback, author = author, date = "H", time = "H" });
+            return _service.Create(_context, Id, score, feedback, author);
         }
 
         // GET: Rankings/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public Task<IActionResult> Edit(int? id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var ranking = await _context.Ranking.FindAsync(id);
-            if (ranking == null)
-            {
-                return NotFound();
-            }
-            return View(ranking);
+           return _service.Edit(_context, id);
         }
 
         // POST: Rankings/Edit/5
@@ -108,68 +78,23 @@ namespace whatsappWeb.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,score,feedback,author,date,time")] Ranking ranking)
+        public Task<IActionResult> Edit(int id, [Bind("Id,score,feedback,author,date,time")] Ranking ranking)
         {
-            if (id != ranking.Id)
-            {
-                return NotFound();
-            }
-
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(ranking);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!RankingExists(ranking.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Search));
-            }
-            return View(ranking);
+            return _service.Edit(_context, id, ranking);
         }
 
         // GET: Rankings/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public Task<IActionResult> Delete(int? id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var ranking = await _context.Ranking
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (ranking == null)
-            {
-                return NotFound();
-            }
-
-            return View(ranking);
+            return _service.Delete(_context, id);
         }
 
         // POST: Rankings/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public Task<IActionResult> DeleteConfirmed(int id)
         {
-            var ranking = await _context.Ranking.FindAsync(id);
-            _context.Ranking.Remove(ranking);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Search));
-        }
-
-        private bool RankingExists(int id)
-        {
-            return _context.Ranking.Any(e => e.Id == id);
+            return _service.DeleteConfirmed(_context, id);
         }
     }
 }

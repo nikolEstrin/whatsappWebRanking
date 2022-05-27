@@ -1,6 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using whatsappWeb.Data;
+using whatsappWeb.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<whatsappWebContext>(options =>
@@ -8,6 +10,7 @@ builder.Services.AddDbContext<whatsappWebContext>(options =>
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddScoped<IRankingsService, RankingsService>();
 
 var app = builder.Build();
 
